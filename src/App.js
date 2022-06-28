@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {Card, H1, Button} from "@blueprintjs/core";
+import UserInput from "./components/UserInput";
+import Test from "./components/Test";
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={"main"}>
+
+      <Card
+        className={"header"}
+        interactive={false}
+        elevation={2}
+        style={{backgroundColor: "#500000"}}
+        onClick={() => console.log("clicked")}
+      >
+        <H1 style={{color: "white"}}>TAMU Grade Distribution</H1>
+      </Card>
+
+      <div className={"main"}>
+        <UserInput/>
+      </div>
+
     </div>
   );
 }
