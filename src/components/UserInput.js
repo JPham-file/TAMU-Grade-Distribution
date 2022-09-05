@@ -1,5 +1,6 @@
 import {Button, InputGroup} from "@blueprintjs/core";
 import {useState} from "react";
+import GradePlot from "./GradePlot";
 
 const UserInput = () => {
   const [department, setDepartment] = useState(true);
@@ -18,8 +19,9 @@ const UserInput = () => {
 
   return (
     <div>
-      {print ? <h2> {department} : {data}</h2> : null}
+      {print ? <h2> {department} : {data} </h2> : null}
       <p className={"inline-text"}>Department Name</p>
+
       <InputGroup
         type={"text"}
         className={"input-group"}
@@ -29,6 +31,7 @@ const UserInput = () => {
         fill={false}
         onChange={getDepartment}
       />
+
       <p className={"inline-text"}>Department number</p>
       <InputGroup
         type={"text"}
@@ -39,12 +42,23 @@ const UserInput = () => {
         fill={false}
         onChange={getData}
       />
+
       <Button
         text={"submit"}
         small={true}
         intent={"primary"}
         onClick={() => setPrint(true)}
       />
+
+      {
+        print ?
+        <div>
+          <GradePlot/>
+        </div>
+        :
+        null
+      }
+
     </div>
   )
 }

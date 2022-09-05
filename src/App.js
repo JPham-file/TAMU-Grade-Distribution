@@ -2,6 +2,7 @@ import './App.css';
 import {Card, H1, Button} from "@blueprintjs/core";
 import UserInput from "./components/UserInput";
 import Test from "./components/Test";
+import GradePlot from "./components/GradePlot";
 
 
 
@@ -22,6 +23,7 @@ function App() {
       <div className={"main"}>
         <UserInput/>
       </div>
+
 
     </div>
   );
