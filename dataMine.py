@@ -17,42 +17,32 @@ def pdf_to_txt(page_number):
 	return reader.numPages
 
 
-def open_files():
-	engineering_department = ["AERO", "BMEN", "BIOT", "CHEN", "SENG", "CVEN", "EVEN", "CLEN", "CYBR", "ENGR", "ICPE",
-	                          "CSCE", "ECEN", "ESET", "IDIS", "MMET", "MXET", "TCMT", "ISEN", "MSEN", "MEEN", "AREN",
-	                          "ITDE", "NUEN", "OCEN", "PETE"]
-	csce = []
-	csce_course = []
-	csce_course_section = []
-	grade_format = {
-		'a': "",
-		'b': "",
-		'c': "",
-		'd': "",
-		'f': "",
-		'a-f': "",
-		'i': "",
-		's': "",
-		'u': "",
-		'q': "",
-		'x': "",
-		'total': "",
-		'professor': "",
-	}
+def extract_data():
+	csv_file = open("./gradePDF/spring2022.csv", "rb")
 
+	csv_file.close()
+
+
+def open_files():
 	total_page_num = pdf_to_txt(0)  # convert pdf to txt file
 	line_start = 21
-	section_increment = 6
 
-	for i in range(total_page_num-1):
+	six_counter = 0  # lines are just 6 and then a new section appears
+	for i in range(total_page_num - 1):
 		read_txt_file = open("./gradePDF/grd20221EN.txt", "r")
 		lines = read_txt_file.readlines()[line_start:]
-		for line in lines:
-			print(line.strip().split())
+		for file_object in lines:
+			if six_counter == 6:
+				print("----------------------------------------------------")
+				six_counter = 0
+			a_line = file_object.strip().split()
+			# print(a_line)
+			for a in a_line:
+				print(a)
+			six_counter += 1
 
-		pdf_to_txt(i+1)
+		pdf_to_txt(i + 1)
 		read_txt_file.close()
-
 
 
 def main():
